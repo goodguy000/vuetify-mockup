@@ -90,7 +90,7 @@
     <v-dialog v-model="projectToDelete" width="500">
       <v-card>
         <v-card-title class="headline teal lighten-3" primary-title>Confirmation</v-card-title>
-        <v-card-text>Are you sure want to delete project?</v-card-text>
+        <v-card-text>Sorry, you have no permission to delete this project.</v-card-text>
 
         <v-divider></v-divider>
 

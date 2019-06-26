@@ -51,7 +51,7 @@ export default {
                 const project = {
                     title: this.title,
                     content: this.content,
-                    due: format(this.due, 'Do MMM YYY'),
+                    due: format(this.due, 'Do MMM YYYY'),
                     person: 'Trung Nguyen',
                     status: 'ongoing'
                 };

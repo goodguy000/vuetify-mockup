@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from './views/Dashboard.vue'
-import Team from './views/Team.vue';
+import Contact from './views/Contact.vue';
 import About from './views/About.vue';
 
 Vue.use(Router)
@@ -24,9 +24,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/Projects.vue')
     },
     {
-      path: '/team',
-      name: 'team',
-      component: Team
+      path: '/contact',
+      name: 'contact',
+      component: Contact
     },
     {
       path: '/about',

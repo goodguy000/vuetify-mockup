@@ -63,8 +63,7 @@ export default {
       links: [
         { icon: "dashboard", text: "Dashboard", route: "/" },
         { icon: "folder", text: "My Projects", route: "projects" },
-        { icon: "person", text: "Team", route: "/team" },
-        { icon: "info", text: "About", route: "/about" }
+        { icon: "email", text: "Contact", route: "/contact" }
       ]
     };
   }

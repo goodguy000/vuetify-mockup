@@ -4,7 +4,7 @@
 
     <v-container class="my-5">
       <v-expansion-panel>
-        <v-expansion-panel-content v-for="project in myProjects" :key="project.title">
+        <v-expansion-panel-content v-for="project in projects" :key="project.title">
           <div slot="header" class="py-1">{{ project.title }}</div>
           <v-card>
             <v-card-text class="px-4 grey--text">
@@ -25,13 +25,6 @@ export default {
   data() {
     return {
       projects: []
-    }
-  },
-  computed: {
-    myProjects() {
-      return this.projects.filter(project => {
-        return project.status != 'complete'
-      })
     }
   },
   created() {
