@@ -1,6 +1,6 @@
 <template>
   <div class="team">
-    <h1 class="subheading grey--text">Team</h1>
+    <h1 class="subheading grey--text">About Me</h1>
     <v-container class="my-5">
       <v-layout row wrap>
         <v-flex xs12 sm6 md4 lg3 v-for="person in team" :key="person.name">
@@ -35,7 +35,7 @@ export default {
         {
           name: "Trung Nguyen",
           role: "Web developer",
-          avatar: "/trung-avatar.png"
+          avatar: "/avatar-1.jpg"
         },
         { name: "Ryu", role: "Graphic designer", avatar: "/avatar-2.jpg" },
         { name: "Chun Li", role: "Web developer", avatar: "/avatar-4.jpg" }

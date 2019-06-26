@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from './views/Dashboard.vue'
 import Team from './views/Team.vue';
+import About from './views/About.vue';
 
 Vue.use(Router)
 
@@ -26,6 +27,11 @@ export default new Router({
       path: '/team',
       name: 'team',
       component: Team
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
     }
   ]
 })

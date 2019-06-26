@@ -27,27 +27,57 @@
         </v-tooltip>
       </v-layout>
 
+      <v-card>
+        <v-layout row wrap class="pa-3">
+          <v-flex xs12 md4>
+            <div class="caption font-weight-bold">Title</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <div class="caption font-weight-bold">Person</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <div class="caption font-weight-bold">Due</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+              <div class="caption font-weight-bold">Status</div>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+              <div class="caption font-weight-bold">Actions</div>
+          </v-flex>
+        </v-layout>
+      </v-card>
+
       <v-card flat v-for="project in projects" :key="project.title">
         <v-layout row wrap :class="`pa-3 project ${project.status}`">
-          <v-flex xs12 md6>
-            <div class="caption grey--text">Title</div>
+          <v-flex xs12 md4>
             <div>{{ project.title }}</div>
           </v-flex>
           <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Person</div>
             <div>{{ project.person }}</div>
           </v-flex>
           <v-flex xs6 sm4 md2>
-            <div class="caption grey--text">Due</div>
             <div>{{ project.due }}</div>
           </v-flex>
           <v-flex xs6 sm4 md2>
-            <div class="right">
-              <v-chip
-                small
-                :class="`${project.status} white--text caption my-2`"
-              >{{ project.status }}</v-chip>
-            </div>
+            <v-chip
+              small
+              :class="`${project.status} white--text caption mt-3`"
+            >{{ project.status }}</v-chip>
+          </v-flex>
+          <v-flex xs6 sm4 md2>
+            <v-tooltip top>
+              <v-btn fab dark small color="cyan" slot="activator">
+                <v-icon dark>edit</v-icon>
+              </v-btn>
+              <span class="caption">Edit</span>
+            </v-tooltip>
+
+            <v-tooltip top>
+              <v-btn fab dark small color="red" slot="activator">
+                <v-icon dark>delete</v-icon>
+              </v-btn>
+              <span class="caption">Delete</span>
+            </v-tooltip>
           </v-flex>
         </v-layout>
       </v-card>
