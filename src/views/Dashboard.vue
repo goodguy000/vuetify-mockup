@@ -39,10 +39,10 @@
             <div class="caption font-weight-bold">Due</div>
           </v-flex>
           <v-flex xs6 sm4 md2>
-              <div class="caption font-weight-bold">Status</div>
+            <div class="caption font-weight-bold">Status</div>
           </v-flex>
           <v-flex xs6 sm4 md2>
-              <div class="caption font-weight-bold">Actions</div>
+            <div class="caption font-weight-bold">Actions</div>
           </v-flex>
         </v-layout>
       </v-card>
@@ -59,21 +59,25 @@
             <div>{{ project.due }}</div>
           </v-flex>
           <v-flex xs6 sm4 md2>
-            <v-chip
-              small
-              :class="`${project.status} white--text caption mt-3`"
-            >{{ project.status }}</v-chip>
+            <v-chip small :class="`${project.status} white--text caption mt-3`">{{ project.status }}</v-chip>
           </v-flex>
           <v-flex xs6 sm4 md2>
             <v-tooltip top>
-              <v-btn fab dark small color="cyan" slot="activator">
+              <v-btn fab dark small color="cyan" slot="activator" @click="projectToEdit = true">
                 <v-icon dark>edit</v-icon>
               </v-btn>
               <span class="caption">Edit</span>
             </v-tooltip>
 
             <v-tooltip top>
-              <v-btn fab dark small color="red" slot="activator">
+              <v-btn
+                fab
+                dark
+                small
+                color="red"
+                slot="activator"
+                @click="projectToDelete = true"
+              >
                 <v-icon dark>delete</v-icon>
               </v-btn>
               <span class="caption">Delete</span>
@@ -82,18 +86,50 @@
         </v-layout>
       </v-card>
     </v-container>
+
+    <v-dialog v-model="projectToDelete" width="500">
+      <v-card>
+        <v-card-title class="headline teal lighten-3" primary-title>Confirmation</v-card-title>
+        <v-card-text>Are you sure want to delete project?</v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" flat @click="projectToDelete = null">OK</v-btn>
+          <v-btn color="primary" flat @click="projectToDelete = null">Cancel</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <v-dialog v-model="projectToEdit" width="500">
+      <v-card>
+        <v-card-title class="headline teal lighten-3" primary-title>Notification</v-card-title>
+        <v-card-text><p>This is mockup to practice about Vuejs.</p>
+          <p>I will update this function soon.</P>
+        </v-card-text>
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="primary" flat @click="projectToEdit = null">Cancel</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script>
-import Popup from '../components/Popup';
-import db from '@/firebase';
+import Popup from "../components/Popup";
+import db from "@/firebase";
 
 export default {
   data() {
     return {
       projects: [],
-      snackbar: false
+      snackbar: false,
+      projectToDelete: null,
+      projectToEdit: null
     };
   },
   components: {
@@ -105,18 +141,19 @@ export default {
     }
   },
   created() {
-    db.collection('projects').onSnapshot(res => {
+    db.collection("projects").onSnapshot(res => {
       const changes = res.docChanges();
       changes.forEach(change => {
-        if (change.type === 'added') {
+        if (change.type === "added") {
           this.projects.push({
             ...change.doc.data(),
             id: change.doc.id
-          })
+          });
         }
-      })
-    })
-  }
+      });
+    });
+  },
+  computed: {}
 };
 </script>
 
